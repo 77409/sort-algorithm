@@ -40,8 +40,8 @@ function main(){
     printf "共%d个元素，冒泡排序结果：" $len
     for (( i = 0; i < len; i++))
     {
-            echo -n " "${A[i]}
-        }
-        printf "\n"
+        echo -n " "${A[i]}
+    }
+    printf "\n"
 }
 main
