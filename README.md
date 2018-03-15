@@ -15,5 +15,7 @@ random.txt
 selection_sort.sh				-> 选择排序
 # 
 shell_sort.sh					-> 希尔排序
-
-
+# 
+执行这句即可得到各个算法的对比
+# 
+for file in ./*.sh ; do time $file; done

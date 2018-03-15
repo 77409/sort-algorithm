@@ -17,24 +17,26 @@ function swap(){
 
 function insertion_sort_dichotomy(){
     n=$1
-    for (int i = 1; i < n; i++)
+    for (( i = 1; i < n; i++))
     {
-        int get = A[i];                    // 右手抓到一张扑克牌
-        int left = 0;                    // 拿在左手上的牌总是排序好的，所以可以用二分法
-        int right = i - 1;                // 手牌左右边界进行初始化
-        while (left <= right)            // 采用二分法定位新牌的位置
-        {
-            int mid = (left + right) / 2;
-            if (A[mid] > get)
-                right = mid - 1;
+        get=${A[i]}                    # 右手抓到一张扑克牌
+        left=0                    # 拿在左手上的牌总是排序好的，所以可以用二分法
+        ((right = i - 1))                # 手牌左右边界进行初始化
+        while ((left <= right))            # 采用二分法定位新牌的位置
+        do
+            (( mid = (left + right) / 2))
+            if ((${A[$mid]} > $get))
+            then
+                ((right = mid - 1))
             else
-                left = mid + 1;
-        }
-        for (int j = i - 1; j >= left; j--)    // 将欲插入新牌位置右边的牌整体向右移动一个单位
+                ((left = mid + 1))
+            fi
+        done
+        for (( j = i - 1; j >= left; j--))    # 将欲插入新牌位置右边的牌整体向右移动一个单位
         {
-            A[j + 1] = A[j];
+            A[$((j + 1))]=${A[j]}
         }
-        A[left] = get;                    // 将抓到的牌插入手牌
+        A[$left]=$get                    # 将抓到的牌插入手牌
     }
 }
 
