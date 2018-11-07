@@ -6,17 +6,7 @@
 # 3. 针对所有的元素重复以上的步骤，除了最后一个。
 # 4. 持续每次对越来越少的元素重复上面的步骤，直到没有任何一对数字需要比较。
 
-A=()
-len=0
-
-function swap(){
-    local i=$1
-    local j=$2
-    local temp=${A[i]}
-    A[$i]=${A[j]}
-    A[$j]=$temp
-
-}
+source commond.sh
 
 function bubble_sort(){
     n=$1
@@ -30,18 +20,17 @@ function bubble_sort(){
             fi
         }
     }
-
 }
 
 function main(){
-    A=(`cat random.txt`)
-    len=${#A[@]}
+    start=$(timestamp)
     bubble_sort $len
-    printf "共%d个元素，冒泡排序结果：" $len
-    for (( i = 0; i < len; i++))
-    {
-        echo -n " "${A[i]}
-    }
-    printf "\n"
+    end=$(timestamp)
+    printf "共%d个元素，冒泡排序（%d ms）结果：" $len $(($end-$start))
+    # for (( i = 0; i < len; i++))
+    # {
+    #     echo -n " "${A[i]}
+    # }
+    # printf "\n"
 }
 main

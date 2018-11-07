@@ -3,17 +3,7 @@
 #
 # 采用二分查找法来减少比较操作的次数，我们称为二分插入排序
 
-A=()
-len=0
-
-function swap(){
-    local i=$1
-    local j=$2
-    local temp=${A[i]}
-    A[$i]=${A[j]}
-    A[$j]=$temp
-
-}
+source commond.sh
 
 function insertion_sort_dichotomy(){
     n=$1
@@ -41,14 +31,14 @@ function insertion_sort_dichotomy(){
 }
 
 function main(){
-    A=(`cat random.txt`)
-    len=${#A[@]}
+    start=$(timestamp)
     insertion_sort_dichotomy $len
-    printf "共%d个元素，二分插入排序结果：" $len
-    for (( i = 0; i < len; i++))
-    {
-            echo -n " "${A[i]}
-        }
-        printf "\n"
+    end=$(timestamp)
+    printf "共%d个元素，二分插入排序（%d ms）结果：" $len $(($end-$start))
+    # for (( i = 0; i < len; i++))
+    # {
+    #     echo -n " "${A[i]}
+    # }
+    # printf "\n"
 }
 main

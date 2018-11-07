@@ -1,5 +1,5 @@
 #!/bin/bash
-# 　冒泡排序算法的运作如下：
+# 　插入排序算法的运作如下：
 #
 # 1. 从第一个元素开始，该元素可以认为已经被排序
 # 2. 取出下一个元素，在已经排序的元素序列中从后向前扫描
@@ -8,17 +8,7 @@
 # 5. 将新元素插入到该位置后
 # 6. 重复步骤2~5
 
-A=()
-len=0
-
-function swap(){
-    local i=$1
-    local j=$2
-    local temp=${A[i]}
-    A[$i]=${A[j]}
-    A[$j]=$temp
-
-}
+source commond.sh
 
 function insertion_sort(){
     n=$1
@@ -36,14 +26,14 @@ function insertion_sort(){
 }
 
 function main(){
-    A=(`cat random.txt`)
-    len=${#A[@]}
+    start=$(timestamp)
     insertion_sort $len
-    printf "共%d个元素，插入排序结果：" $len
-    for (( i = 0; i < len; i++))
-    {
-            echo -n " "${A[i]}
-        }
-        printf "\n"
+    end=$(timestamp)
+    printf "共%d个元素，插入排序（%d ms）结果：" $len $(($end-$start))
+    # for (( i = 0; i < len; i++))
+    # {
+    #         echo -n " "${A[i]}
+    # }
+    # printf "\n"
 }
 main

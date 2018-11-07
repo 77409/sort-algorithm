@@ -1,21 +1,11 @@
 #!/bin/bash
 # 　希尔排序算法的运作如下：
-#   
+#
 # 希尔排序是基于插入排序的以下两点性质而提出改进方法的：
 # 1. 插入排序在对几乎已经排好序的数据操作时，效率高，即可以达到线性排序的效率
 # 2. 但插入排序一般来说是低效的，因为插入排序每次只能将数据移动一位
 
-A=()
-len=0
-
-function swap(){
-    local i=$1
-    local j=$2
-    local temp=${A[i]}
-    A[$i]=${A[j]}
-    A[$j]=$temp
-
-}
+source commond.sh
 
 function shell_sort(){
     n=$1
@@ -42,14 +32,14 @@ function shell_sort(){
 }
 
 function main(){
-    A=(`cat random.txt`)
-    len=${#A[@]}
+    start=$(timestamp)
     shell_sort $len
-    printf "共%d个元素，希尔排序结果：" $len
-    for (( i = 0; i < len; i++))
-    {
-        echo -n " "${A[i]}
-    }
-    printf "\n"
+    end=$(timestamp)
+    printf "共%d个元素，希尔排序（%d ms）结果：" $len $(($end-$start))
+    # for (( i = 0; i < len; i++))
+    # {
+    #     echo -n " "${A[i]}
+    # }
+    # printf "\n"
 }
 main

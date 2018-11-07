@@ -5,17 +5,7 @@
 # 然后，再从剩余未排序元素中继续寻找最小（大）元素，放到已排序序列的末尾。
 # 以此类推，直到所有元素均排序完毕。
 
-A=()
-len=0
-
-function swap(){
-    local i=$1
-    local j=$2
-    local temp=${A[i]}
-    A[$i]=${A[j]}
-    A[$j]=$temp
-
-}
+source commond.sh
 
 function selection_sort(){
     n=$1
@@ -37,14 +27,14 @@ function selection_sort(){
 }
 
 function main(){
-    A=(`cat random.txt`)
-    len=${#A[@]}
+    start=$(timestamp)
     selection_sort $len
-    printf "共%d个元素，选择排序结果：" $len
-    for (( i = 0; i < len; i++))
-    {
-            echo -n " "${A[i]}
-        }
-        printf "\n"
+    end=$(timestamp)
+    printf "共%d个元素，选择排序（%d ms）结果：" $len $(($end-$start))
+    # for (( i = 0; i < len; i++))
+    # {
+    #     echo -n " "${A[i]}
+    # }
+    # printf "\n"
 }
 main

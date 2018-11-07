@@ -3,18 +3,7 @@
 #
 # 也叫定向冒泡排序，是冒泡排序的一种改进。此算法与冒泡排序的不同处在于从低到高然后从高到低，而冒泡排序则仅从低到高去比较序列里的每个元素
 
-
-A=()
-len=0
-
-function swap(){
-    local i=$1
-    local j=$2
-    local temp=${A[i]}
-    A[$i]=${A[j]}
-    A[$j]=$temp
-
-}
+source commond.sh
 
 function cocktail_sort(){
     left=0
@@ -44,12 +33,14 @@ function cocktail_sort(){
 function main(){
     A=(`cat random.txt`)
     len=${#A[@]}
+    start=$(timestamp)
     cocktail_sort $len
-    printf "共%d个元素，鸡尾酒排序结果：" $len
-    for (( i = 0; i < len; i++))
-    {
-        echo -n " "${A[i]}
-    }
-    printf "\n"
+    end=$(timestamp)
+    printf "共%d个元素，鸡尾酒排序（%d ms）结果：" $len $(($end-$start))
+    # for (( i = 0; i < len; i++))
+    # {
+    #     echo -n " "${A[i]}
+    # }
+    # printf "\n"
 }
 main
