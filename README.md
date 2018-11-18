@@ -10,12 +10,18 @@ insertion_sort_dichotomy.sh		-> 二分法插入排序
 # 
 merge_sort.sh					-> 合并排序
 # 
-random.txt			
-# 
 selection_sort.sh				-> 选择排序
 # 
 shell_sort.sh					-> 希尔排序
 # 
-执行这句即可得到各个算法的对比
-# 
+mac上会出现date命令执行失败的情况，可以将commond.sh中的一下代码注释掉，然后用time命令自行统计。
+```shell
+# 精确到毫秒的时间戳
+function timestamp(){
+    # echo `date +%s`$(printf "%03d" $((10#`date +%N`/1000000)))
+}
+
+```
+```
 for file in ./*.sh ; do time $file; done
+```
